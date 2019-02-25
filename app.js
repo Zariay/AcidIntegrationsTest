@@ -10,13 +10,17 @@ const server = http.createServer((req, res) => {
   res.end('Hello World\n');
 });
 
+var mongo = require('mongodb');
+var fs = require('fs');
+http.createServer(function (req, res) {
+  fs.readFile('AcidIntegrationTest.html', function(err, data) {
+    res.writeHead(200, {'Content-Type': 'text/html'});
+    res.write(data);
+    res.end();
+  });
+}).listen(8080);
+
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
 
-var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://localhost/cubeAspects";
-MongoClient.connect(url, function(err,db) {
-console.log("Connected");
-db.close();
-});

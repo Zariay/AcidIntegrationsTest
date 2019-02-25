@@ -1,5 +1,5 @@
 // JavaScript source code
-var url = 'mongodb://localhost:8080/test';
+var url = 'mongodb://127.0.0.1:8080/test';
 
 co(function*() {
   const db = yield MongoClient.connect(url);
