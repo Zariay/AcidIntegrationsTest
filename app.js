@@ -13,3 +13,10 @@ const server = http.createServer((req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost/cubeAspects";
+MongoClient.connect(url, function(err,db) {
+console.log("Connected");
+db.close();
+});
